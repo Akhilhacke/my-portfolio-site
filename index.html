@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio | Light Minimal</title>
+    <meta name="description"
+        content="A minimalist, modern personal developer portfolio showcasing projects and skills.">
+    <!-- Google Fonts: Inter for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Background Graphics -->
+    <div class="bg-graphics" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header slide-down">
+        <div class="container nav-container">
+            <a href="#" class="logo">Akhilesh<span>.</span></a>
+            <nav class="nav">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <!-- Default to moon icon for light mode -->
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <!-- Sun icon hidden by default -->
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <a href="#contact" class="nav-link btn-contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container fade-in">
+            <div class="hero-text">
+                <h1 class="hero-title">Turning Caffeine &amp; Code <br class="desktop-break"> into Digital Magic</h1>
+                <p class="hero-subtitle">Crafting clean, accessible, and user-centric digital experiences with modern
+                    web
+                    technologies.</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#about" class="btn btn-secondary">More About Me</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="profile.png" alt="Akhilesh - Software Developer" class="hero-image fade-in delay-1">
+            </div>
+        </div>
+        <div class="scroll-indicator fade-in delay-2">
+            <span>Scroll Down</span>
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container reveal">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    Hello! I'm a passionate developer focused on building intuitive and beautiful web applications.
+                    I specialize in front-end development, where I blend design principles with robust engineering
+                    to create seamless user experiences.
+                </p>
+                <p class="about-text">
+                    My approach is minimalist: stripping away the unnecessary to let the content and functionality
+                    shine.
+                    When I'm not coding, you can find me exploring new design trends or contributing to open-source
+                    projects.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills bg-light" id="skills">
+        <div class="container reveal">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <!-- Skill items act as soft tags -->
+                <div class="skill-tag">HTML5 &amp; Semantic Web</div>
+                <div class="skill-tag">CSS3 / modern layout (Grid/Flex)</div>
+                <div class="skill-tag">JavaScript (ES6+)</div>
+                <div class="skill-tag">React.js / Next.js</div>
+                <div class="skill-tag">TypeScript</div>
+                <div class="skill-tag">UI/UX Design Principles</div>
+                <div class="skill-tag">Responsive Animations</div>
+                <div class="skill-tag">Git &amp; Version Control</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container reveal">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="projects-grid">
+
+                <!-- Project Card 1 -->
+                <article class="project-card">
+                    <div class="project-image-placeholder prj-1"></div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                        <h3 class="project-title">E-Commerce Dashboard</h3>
+                        <p class="project-desc">A clean, high-performance dashboard for managing online store inventory
+                            and analytics.</p>
+                        <a href="#" class="project-link">View Project &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Project Card 2 -->
+                <article class="project-card">
+                    <div class="project-image-placeholder prj-2"></div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Tailwind</span>
+                        </div>
+                        <h3 class="project-title">Minimalist Blog</h3>
+                        <p class="project-desc">A typography-focused blogging platform designed for readability and
+                            speed.</p>
+                        <a href="#" class="project-link">View Project &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Project Card 3 -->
+                <article class="project-card">
+                    <div class="project-image-placeholder prj-3"></div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Vanilla JS</span>
+                            <span class="tag">API</span>
+                        </div>
+                        <h3 class="project-title">Weather Application</h3>
+                        <p class="project-desc">Real-time weather data visualization with a soft, glassmorphic UI.</p>
+                        <a href="#" class="project-link">View Project &rarr;</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact bg-light" id="contact">
+        <div class="container reveal">
+            <div class="contact-wrapper">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="contact-text">Currently open for new opportunities or freelance projects. Whether you have a
+                    question or just want to say hi, I'll try my best to get back to you!</p>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=akhileshkalme476@gmail.com" target="_blank"
+                    class="btn btn-primary btn-large">Say Hello</a>
+
+                <div class="social-links">
+                    <a href="https://github.com/Akhil6335" target="_blank" rel="noopener noreferrer"
+                        class="social-link github-icon" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/akhilesh-kalme-30257b218/" target="_blank"
+                        rel="noopener noreferrer" class="social-link linkedin-icon" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link x-icon" aria-label="X (Twitter)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Developer Portfolio. Built with minimalist principles.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
