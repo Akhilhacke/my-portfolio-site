@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submissions | Akhil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent: #6366f1;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .submission {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .submission-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .submission-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .submission-number {
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .field-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .field-value {
+            color: var(--text-primary);
+            font-size: 1rem;
+            word-break: break-word;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            background: var(--bg-secondary);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            Back to Portfolio
+        </a>
+
+        <h1><i class="fas fa-inbox" style="color: var(--accent);"></i> Form Submissions</h1>
+        <p class="subtitle">View all contact form submissions</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="totalCount">0</div>
+                <div class="stat-label">Total Submissions</div>
+            </div>
+        </div>
+
+        <div id="submissionsList">
+            <!-- Submissions will be loaded here -->
+        </div>
+
+        <button class="clear-btn" id="clearBtn" style="display: none;">
+            <i class="fas fa-trash"></i>
+            Clear All Submissions
+        </button>
+    </div>
+
+    <script>
+        // Load submissions from localStorage
+        function loadSubmissions() {
+            const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+            const container = document.getElementById('submissionsList');
+            const totalCount = document.getElementById('totalCount');
+            const clearBtn = document.getElementById('clearBtn');
+
+            totalCount.textContent = submissions.length;
+
+            if (submissions.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h3>No submissions yet</h3>
+                        <p>When someone fills out your contact form, their message will appear here.</p>
+                    </div>
+                `;
+                clearBtn.style.display = 'none';
+            } else {
+                clearBtn.style.display = 'flex';
+                container.innerHTML = submissions.reverse().map((sub, index) => `
+                    <div class="submission">
+                        <div class="submission-header">
+                            <span class="submission-date">
+                                <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                                ${new Date(sub.date).toLocaleString()}
+                            </span>
+                            <span class="submission-number">#${submissions.length - index}</span>
+                        </div>
+                        <div class="field">
+                            <div class="field-label">Name</div>
+                            <div class="field-value">${sub.name}</div>
+                        </div>
+                        <div class="field">
+                            <div class="field-label">Email</div>
+                            <div class="field-value">${sub.email}</div>
+                        </div>
+                        <div class="field">
+                            <div class="field-label">Subject</div>
+                            <div class="field-value">${sub.subject}</div>
+                        </div>
+                        <div class="field">
+                            <div class="field-label">Message</div>
+                            <div class="field-value">${sub.message}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Clear all submissions
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to delete all submissions?')) {
+                localStorage.removeItem('formSubmissions');
+                loadSubmissions();
+            }
+        });
+
+        // Load on page load
+        loadSubmissions();
+
+        // Refresh every 5 seconds
+        setInterval(loadSubmissions, 5000);
+    </script>
+</body>
+</html>
